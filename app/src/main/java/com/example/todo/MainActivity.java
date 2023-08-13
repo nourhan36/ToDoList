@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements DialogCloseListener {
+    String name;
     private RecyclerView recyclerViewTasks;
     private AAdapter tasksAdapter;
     private List<MModel> tasksList;
