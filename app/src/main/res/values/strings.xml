@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ToDo</string>
+    <string name="note">Note</string>
+    <string name="title">ToDo List</string>
+    <string name="todo">TODO</string>
+    <string name="add" />
+    <string name="newtask" />
+    <string name="newTask">New Task</string>
+    <string name="task">Task</string>
+    <string name="addbtn">Add</string>
+    <string name="cancelbtn">Cancel</string>
+    <string name="todo22">TODO</string>
+</resources>
