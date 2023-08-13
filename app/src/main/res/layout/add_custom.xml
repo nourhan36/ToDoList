@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/lightPink">
+    android:background="@color/white">
 
     <EditText
         android:id="@+id/etNewTask"
@@ -12,11 +12,13 @@
         android:layout_height="48dp"
         android:layout_marginStart="101dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="50dp"
         android:ems="10"
+        android:hint="Task"
         android:inputType="text"
-        android:text="@string/task"
-        android:textColor="@color/white"
+        android:text=""
+        android:textColor="@color/pink"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +32,7 @@
         android:layout_marginEnd="108dp"
         android:text="@string/cancelbtn"
         android:textStyle="bold"
+        android:textSize="15sp"
         android:backgroundTint="#E89F9F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewTask" />
@@ -39,10 +42,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="35dp"
         android:text="@string/newTask"
+        android:textColor="@color/pink"
+        android:textSize="30sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,6 +58,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/addbtn"
         android:textStyle="bold"
+        android:textSize="15sp"
         android:backgroundTint="#E89F9F"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewTask" />

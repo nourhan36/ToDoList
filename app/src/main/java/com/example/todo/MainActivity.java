@@ -5,10 +5,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.todo.Adapter.AAdapter;
 import com.example.todo.DataBase.DataBaseHandler;
 import com.example.todo.Model.MModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
     private AAdapter tasksAdapter;
     private List<MModel> tasksList;
     private DataBaseHandler db;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,22 +38,21 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
 
         tasksList = new ArrayList<>();
         recyclerViewTasks = findViewById(R.id.recyclerViewtasks);
-        tasksAdapter = new AAdapter(MainActivity.this);
+        tasksAdapter = new AAdapter(db,MainActivity.this);
         recyclerViewTasks.setAdapter(tasksAdapter);
 
-        MModel task = new MModel();
-        task.setTask("Test Task");
-        task.setStatus(0);
-        task.setId(1);
+        fab=findViewById(R.id.floatingActionButton2);
 
-        tasksList.add(task);
-        tasksList.add(task);
-        tasksList.add(task);
-        tasksList.add(task);
-        tasksList.add(task);
-        tasksList.add(task);
-
+        tasksList = db.getAllTasks();
+        Collections.reverse(tasksList);
         tasksAdapter.setTasks(tasksList);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddTask.newInstance().show(getSupportFragmentManager(), AddTask.TAG);
+            }
+        });
     }
 
     public void handleDialogClose(DialogInterface dialog) {
