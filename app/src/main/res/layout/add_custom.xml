@@ -33,7 +33,9 @@
         android:text="@string/cancelbtn"
         android:textStyle="bold"
         android:textSize="15sp"
+        android:textColor="@color/white"
         android:backgroundTint="@color/pink"
+        android:background="@drawable/rounded_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewTask" />
 
@@ -59,7 +61,9 @@
         android:text="@string/addbtn"
         android:textStyle="bold"
         android:textSize="15sp"
-        android:backgroundTint="#E89F9F"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/pink"
+        android:background="@drawable/rounded_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewTask" />
 

@@ -7,18 +7,18 @@
     android:background="@color/lightPink">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvTask_viewTasks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="@string/viewTask"
         android:textColor="@color/pink"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintStart_toStartOf="@+id/editbtn"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/editbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
@@ -28,23 +28,23 @@
         android:textSize="15sp"
         android:backgroundTint="@color/pink"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTask_viewTasks" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/deletebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:text="Button"
-        android:textStyle="bold"
-        android:textSize="15sp"
         android:backgroundTint="@color/pink"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/button" />
+        android:text="@string/delete"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/editbtn"
+        app:layout_constraintStart_toEndOf="@+id/editbtn"
+        app:layout_constraintTop_toTopOf="@+id/editbtn" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/cancelbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -52,7 +52,7 @@
         android:textStyle="bold"
         android:textSize="15sp"
         android:backgroundTint="@color/pink"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
-        app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
+        app:layout_constraintBottom_toBottomOf="@+id/deletebtn"
+        app:layout_constraintStart_toEndOf="@+id/deletebtn"
+        app:layout_constraintTop_toTopOf="@+id/deletebtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="64dp"
     android:layout_margin="8dp"
+    android:layout_marginRight="8dp"
     app:cardCornerRadius="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/lightPink">
 
         <TextView
             android:id="@+id/textView2"
@@ -29,10 +30,23 @@
             android:id="@+id/checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
             android:buttonTint="@color/pink"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="284dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="@color/pink"
+            android:text="@string/select"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/checkBox"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
