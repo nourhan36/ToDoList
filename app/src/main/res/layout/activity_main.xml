@@ -15,7 +15,7 @@
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="83dp"
-        android:background="#E89F9F"
+        android:background="@color/pink"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewtasks"

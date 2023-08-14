@@ -33,7 +33,7 @@
         android:text="@string/cancelbtn"
         android:textStyle="bold"
         android:textSize="15sp"
-        android:backgroundTint="#E89F9F"
+        android:backgroundTint="@color/pink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewTask" />
 

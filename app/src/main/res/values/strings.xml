@@ -10,4 +10,7 @@
     <string name="addbtn">Add</string>
     <string name="cancelbtn">Cancel</string>
     <string name="todo22">TODO</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="viewTask" />
 </resources>
