@@ -87,6 +87,10 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         db.update(TODO_TABLE, cv, ID + "= ?", new String[] {String.valueOf(id)});
     }
 
+    public void showTask(int id){
+        ContentValues cv = new ContentValues();
+        cv.get(TASK);
+    }
     public void updateTask(int id, String task) {
         ContentValues cv = new ContentValues();
         cv.put(TASK, task);

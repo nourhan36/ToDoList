@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.todo.Adapter.AAdapter;
 import com.example.todo.DataBase.DataBaseHandler;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
     private List<MModel> tasksList;
     private DataBaseHandler db;
     private FloatingActionButton fab;
+    private Button selectBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

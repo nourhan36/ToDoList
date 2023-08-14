@@ -6,6 +6,7 @@ import com.example.todo.DataBase.DataBaseHandler;
 import com.example.todo.MainActivity;
 import com.example.todo.Model.MModel;
 import com.example.todo.R;
+import com.example.todo.ViewTask;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -47,6 +49,10 @@ public class AAdapter extends RecyclerView.Adapter<AAdapter.ViewHolder>{
         MModel item=todoList.get(position);
         holder.task.setText(item.getTask());
         holder.task.setChecked(toBoolean(item.getStatus()));
+        holder.selectBtn.setOnClickListener(view -> {
+            showItem(position);
+            //editItem(position);
+        });
         holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -84,6 +90,15 @@ public class AAdapter extends RecyclerView.Adapter<AAdapter.ViewHolder>{
         todoList.remove(position);
         notifyItemRemoved(position);
     }
+    public void showItem(int position){
+        MModel item = todoList.get(position);
+        Bundle bundle = new Bundle();
+        bundle.putInt("id", item.getId());
+        bundle.putString("task", item.getTask());
+        ViewTask fragments=new ViewTask(position);
+        fragments.setArguments(bundle);
+        fragments.show(activity.getSupportFragmentManager() , ViewTask.TAG);
+    }
 
     public void editItem(int position) {
         MModel item = todoList.get(position);
@@ -96,10 +111,12 @@ public class AAdapter extends RecyclerView.Adapter<AAdapter.ViewHolder>{
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        private Button selectBtn;
         CheckBox task;
         public ViewHolder(View view) {
             super(view);
             task = view.findViewById(R.id.checkBox);
+            selectBtn=view.findViewById(R.id.btnselect);
         }
     }
 }

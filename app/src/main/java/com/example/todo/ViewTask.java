@@ -17,32 +17,32 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.todo.Adapter.AAdapter;
 import com.example.todo.DataBase.DataBaseHandler;
 import com.example.todo.Model.MModel;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import java.util.List;
+
 public class ViewTask extends BottomSheetDialogFragment {
 
+    private int position;
     private TextView tvTask;
     private Button btnEdit , btnDelete , btnCancel;
     public static final String TAG = "ActionBottomDialog";
-    private EditText newTaskText;
-
-    private Button newTaskSaveButton;
-
     private DataBaseHandler db;
-
-    public static AddTask newInstance(){
-        return new AddTask();
+    private List<MModel> todoList;
+    private AAdapter adapter;
+    private MainActivity activity;
+    public ViewTask(int position){
+        this.position=position;
     }
-
-    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStyle(STYLE_NORMAL, R.style.DialogStyle);
     }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -57,72 +57,31 @@ public class ViewTask extends BottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        tvTask = getView().findViewById(R.id.tvTask_viewTasks);
+        tvTask=getView().findViewById(R.id.tvTask_viewTasks);
         btnEdit = getView().findViewById(R.id.editbtn);
         btnDelete = getView().findViewById(R.id.deletebtn);
         btnCancel = getView().findViewById(R.id.cancelBtn);
 
-        boolean isUpdate = false;
-
         final Bundle bundle = getArguments();
         if(bundle != null){
-            isUpdate = true;
             String task = bundle.getString("task");
-            newTaskText.setText(task);
-            assert task != null;
-            if(task.length()>0)
-                newTaskSaveButton.setTextColor(ContextCompat.getColor((getContext()), com.google.android.material.R.color.design_default_color_primary_dark));
+            tvTask.setText(task);
         }
 
-        db = new DataBaseHandler(getActivity());
-        db.openDatabase();
+//        btnEdit.setOnClickListener(view1 -> {
+//            adapter.editItem(position);
+//        });
+//
+//        btnDelete.setOnClickListener(view1 -> {
+//            adapter.deleteItem(position);
+//        });
 
-        newTaskText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.toString().equals("")){
-                    newTaskSaveButton.setEnabled(false);
-                    newTaskSaveButton.setTextColor(Color.GRAY);
-                }
-                else{
-                    newTaskSaveButton.setEnabled(true);
-                    newTaskSaveButton.setTextColor(ContextCompat.getColor((getContext()), com.google.android.material.R.color.design_default_color_primary_dark));
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
-
-        final boolean finalIsUpdate = isUpdate;
-        newTaskSaveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String text = newTaskText.getText().toString();
-                if(finalIsUpdate){
-                    db.updateTask(bundle.getInt("id"), text);
-                }
-                else {
-                    MModel task = new MModel();
-                    task.setTask(text);
-                    task.setStatus(0);
-                    db.insertTask(task);
-                }
-                dismiss();
-            }
-        });
     }
+    //    tvTask = getView().findViewById(R.id.tvTask_viewTasks);
+//    btnEdit = getView().findViewById(R.id.editbtn);
+//    btnDelete = getView().findViewById(R.id.deletebtn);
+//    btnCancel = getView().findViewById(R.id.cancelBtn);
 
-    @Override
-    public void onDismiss(@NonNull DialogInterface dialog){
-        Activity activity = getActivity();
-        if(activity instanceof DialogCloseListener)
-            ((DialogCloseListener)activity).handleDialogClose(dialog);
-    }
 
 }

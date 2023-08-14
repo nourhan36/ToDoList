@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lightPink">
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/textView2"
@@ -37,7 +37,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnselect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="284dp"
