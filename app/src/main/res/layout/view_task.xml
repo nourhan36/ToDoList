@@ -13,6 +13,7 @@
         android:layout_marginTop="36dp"
         android:text="@string/viewTask"
         android:textColor="@color/pink"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/editbtn"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,12 +22,12 @@
         android:id="@+id/editbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="42dp"
-        android:text="@string/edit"
-        android:textStyle="bold"
-        android:textSize="15sp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="@color/pink"
+        android:text="@string/edit"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTask_viewTasks" />
 
@@ -34,25 +35,14 @@
         android:id="@+id/deletebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="44dp"
         android:backgroundTint="@color/pink"
         android:text="@string/delete"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/editbtn"
         app:layout_constraintStart_toEndOf="@+id/editbtn"
-        app:layout_constraintTop_toTopOf="@+id/editbtn" />
+        app:layout_constraintTop_toTopOf="@+id/editbtn"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <Button
-        android:id="@+id/cancelbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:text="@string/cancelbtn"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        android:backgroundTint="@color/pink"
-        app:layout_constraintBottom_toBottomOf="@+id/deletebtn"
-        app:layout_constraintStart_toEndOf="@+id/deletebtn"
-        app:layout_constraintTop_toTopOf="@+id/deletebtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@ import com.example.todo.ViewTask;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.LauncherActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,6 +31,7 @@ public class AAdapter extends RecyclerView.Adapter<AAdapter.ViewHolder>{
     private List<MModel> todoList;
     private MainActivity activity;
     private DataBaseHandler db;
+    private ViewTask vt;
 
     public AAdapter(DataBaseHandler db ,MainActivity activity){
         this.db=db;
@@ -49,7 +51,9 @@ public class AAdapter extends RecyclerView.Adapter<AAdapter.ViewHolder>{
         MModel item=todoList.get(position);
         holder.task.setText(item.getTask());
         holder.task.setChecked(toBoolean(item.getStatus()));
+
         holder.selectBtn.setOnClickListener(view -> {
+            int pos=position;
             showItem(position);
             //editItem(position);
         });
@@ -95,9 +99,10 @@ public class AAdapter extends RecyclerView.Adapter<AAdapter.ViewHolder>{
         Bundle bundle = new Bundle();
         bundle.putInt("id", item.getId());
         bundle.putString("task", item.getTask());
-        ViewTask fragments=new ViewTask(position);
-        fragments.setArguments(bundle);
-        fragments.show(activity.getSupportFragmentManager() , ViewTask.TAG);
+
+        ViewTask fragment = new ViewTask(position, this); // Pass the adapter instance and position
+        fragment.setArguments(bundle);
+        fragment.show(activity.getSupportFragmentManager(), ViewTask.TAG);
     }
 
     public void editItem(int position) {

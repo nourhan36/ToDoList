@@ -1,6 +1,7 @@
 package com.example.todo;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -36,8 +37,9 @@ public class ViewTask extends BottomSheetDialogFragment {
     private List<MModel> todoList;
     private AAdapter adapter;
     private MainActivity activity;
-    public ViewTask(int position){
-        this.position=position;
+    public ViewTask(int position, AAdapter adapter) {
+        this.position = position;
+        this.adapter = adapter;
     }
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,13 +56,11 @@ public class ViewTask extends BottomSheetDialogFragment {
         return view;
     }
 
-    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         tvTask=getView().findViewById(R.id.tvTask_viewTasks);
         btnEdit = getView().findViewById(R.id.editbtn);
         btnDelete = getView().findViewById(R.id.deletebtn);
-        btnCancel = getView().findViewById(R.id.cancelBtn);
 
         final Bundle bundle = getArguments();
         if(bundle != null){
@@ -68,15 +68,39 @@ public class ViewTask extends BottomSheetDialogFragment {
             tvTask.setText(task);
         }
 
-//        btnEdit.setOnClickListener(view1 -> {
-//            adapter.editItem(position);
-//        });
-//
-//        btnDelete.setOnClickListener(view1 -> {
-//            adapter.deleteItem(position);
-//        });
+        btnEdit.setOnClickListener(view1 -> {
+            if (adapter != null) {
+                adapter.editItem(position);
+            }
+        });
 
+        btnDelete.setOnClickListener(view1 -> {
+            showDeleteConfirmationDialog();
+        });
 
+    }
+    private void showDeleteConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext()); // Use requireContext()
+        builder.setTitle(R.string.delete_task_dialog_title);
+        builder.setMessage(R.string.delete_task_dialog_message);
+        builder.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (adapter != null) {
+                    adapter.deleteItem(position);
+                }
+                dialog.dismiss();
+                dismiss(); // Close the dialog
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss(); // Close the dialog
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
     //    tvTask = getView().findViewById(R.id.tvTask_viewTasks);
 //    btnEdit = getView().findViewById(R.id.editbtn);

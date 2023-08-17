@@ -111,6 +111,7 @@ public class AddTask extends BottomSheetDialogFragment {
                 dismiss();
             }
         });
+
     }
 
     @Override
